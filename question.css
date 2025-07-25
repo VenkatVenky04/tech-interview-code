@@ -1,0 +1,145 @@
+.card-img-top {
+    padding: 16px;
+}
+.question {
+    flex-direction: column;
+}
+.question_container {
+    flex-direction: column;
+}
+.question_data {
+    background-color: #d9e4c4;
+}
+.main_container {
+    gap: 8px;
+}
+.question_sec {
+    background-color: #86bc25;
+    padding: 12px 12px 50px 12px;
+    border-radius: 0px 0px 8px 8px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.Profile_pic_task {
+    margin: 50px 0px;
+    text-align: center;
+}
+
+.results {
+    padding: 20px;
+}
+
+.result-line.upload-another {
+    color: red;
+  }
+  
+  .result-line.accepted {
+    color: green;
+  }
+  
+  .result-line.crop {
+    color: orange;
+  }
+
+/* Media Queries */
+/* Mobile devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .option-card {
+      width: 100% !important;
+      margin: 0 auto;
+    }
+  
+    .card-img-top {
+      height: auto;
+    }
+  
+    .bg-success .text-white {
+      font-size: 0.9rem;
+    }
+    .question_sec {
+        color: #fff;
+        padding: 10px;
+        gap: 0px;
+        justify-content: space-between;
+    }
+    .question {
+        background-color: #86bc25;
+    }
+    .main_container {
+        gap: 0px;
+    }
+    .single_card_res {
+        width: 80% !important;
+        margin: auto;
+    }
+  }
+  
+  /* Tablets (≥576px and <768px) */
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    .option-card {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  
+    .card-img-top {
+      height: 140px;
+    }
+    .question_sec {
+        color: #fff;
+        padding: 10px;
+        gap: 0px;
+        justify-content: space-between;
+    }
+    .question {
+        background-color: #86bc25;
+    }
+    .main_container {
+        gap: 0px;
+    }
+  }
+  
+  /* Medium Devices (≥768px and <992px) */
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    .option-card {
+      width: 180px;
+    }
+    .main_container {
+        flex-direction: column;
+    }
+    .card_fix {
+        justify-content: center;
+    }
+    .single_card_res {
+        width: 30% !important;
+    }
+    .question_sec {
+        color: #fff;
+        padding: 10px;
+        gap: 0px;
+        justify-content: space-between;
+    }
+    .question {
+        background-color: #86bc25;
+    }
+    .main_container {
+        gap: 0px;
+    }
+  }
+  
+  /* Large Devices (≥992px and <1200px) */
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    .option-card {
+      width: 160px;
+    }
+  }
+  
+  /* Extra large Devices (≥1200px) */
+  @media (min-width: 1200px) {
+    .option-card {
+      width: 160px;
+    }
+  }
+  
