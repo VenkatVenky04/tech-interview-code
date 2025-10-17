@@ -10,10 +10,8 @@
 </head>
 
 <body>
-    <!-- Question Section -->
     <div class="container d-flex flex-column flex-lg-row py-4 main_container">
 
-        <!-- Left Section -->
         <div
             class="d-flex align-items-start justify-content-start question mb-0 mb-md-0 mb-sm-0 mb-lg-3 mb-xl-3 mb-xxl-3 me-lg-4">
             <div class="question_sec d-flex flex-row flex-lg-column w-100">
@@ -22,7 +20,6 @@
             </div>
         </div>
 
-        <!-- Right Section -->
         <div class="d-flex flex-column question_container w-100">
 
             <div class="text-black p-3 mb-0 mb-lg-4 d-flex align-items-center question_data rounded-0">
@@ -33,47 +30,40 @@
                 </div>
             </div>
 
-            <!-- Instructions -->
             <p class="text-primary mb-5">
                 Below are three options on how to respond to the scenario above. Please choose the response that
                 resonates most with you and click <strong>Next</strong> to proceed.
             </p>
 
-            <!-- Option Cards -->
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4 mb-4 card_fix">
 
-                <!-- Card 1 -->
                 <div class="col d-flex justify-content-center single_card_res">
                     <div class="card option-card text-center" style="background-color: #d9e4c3;">
-                        <img src="assets/iron-man-2560x2494-infinity-gauntlet-hd-16412.jpg" class="card-img-top"
-                            alt="Option 3">
+                        <img src="assets/iron-man.jpg" class="card-img-top" alt="Option 1">
                         <div class="card-body">
                             <input type="checkbox" class="form-check-input" />
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 2 -->
                 <div class="col d-flex justify-content-center single_card_res">
                     <div class="card option-card text-center" style="background-color: #d9e4c3;">
-                        <img src="assets/Complex_eLearning_322W_322H.png" class="card-img-top" alt="Option 1">
+                        <img src="assets/Complex_eLearning_322W_322H.png" class="card-img-top" alt="Option 2">
                         <div class="card-body">
                             <input type="checkbox" class="form-check-input" />
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 3 -->
                 <div class="col d-flex justify-content-center single_card_res">
                     <div class="card option-card text-center" style="background-color: #d9e4c3;">
-                        <img src="assets/ELearning.png" class="card-img-top" alt="Option 2">
+                        <img src="assets/ELearning.png" class="card-img-top" alt="Option 3">
                         <div class="card-body">
                             <input type="checkbox" class="form-check-input" />
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 4 -->
                 <div class="col d-flex justify-content-center single_card_res">
                     <div class="card option-card text-center" style="background-color: #d9e4c3;">
                         <img src="assets/Medium_Complexity_E_Learning_322W_322H.png" class="card-img-top"
@@ -86,7 +76,6 @@
 
             </div>
 
-            <!-- Submit Button -->
             <div class="text-center">
                 <button class="btn btn-secondary" disabled style="padding: 6px 40px;">Submit</button>
             </div>
@@ -95,69 +84,160 @@
     </div>
 
 
-    <div class="Profile_pic_task">
-        <h2>Facebook Photo Upload Checker</h2>
+    <div class="Profile_pic_task text-center">
+        <h2 class="mb-4">Facebook Photo Upload Checker</h2>
 
-        <label for="minLength">Minimum Dimension (L):</label>
-        <input type="number" id="minLength" value="180" /><br><br>
+        <div class="mb-3">
+            <label for="minLength" class="form-label fw-bold">Minimum Dimension (L):</label>
+            <input type="number" id="minLength" value="180" class="form-control w-50 mx-auto" />
+        </div>
 
-        <input type="file" id="photoInput" accept="image/*" multiple>
-        <button onclick="checkUploadedPhotos()">Check Photos</button>
+        <div class="mb-3">
+            <label for="photoCount" class="form-label fw-bold">Number of Photos (N):</label>
+            <input type="number" id="photoCount" value="3" class="form-control w-50 mx-auto"
+                oninput="updateFileLimit()" />
+        </div>
 
+        <div class="mb-3">
+            <label for="photoInput" class="form-label fw-bold">Upload Photos:</label>
+            <input type="file" id="photoInput" accept="image/*" multiple class="form-control w-75 mx-auto">
+            <div id="fileHint" class="text-secondary mt-2"></div>
+        </div>
+
+        <button class="btn btn-primary" onclick="checkUploadedPhotos()">Check Photos</button>
 
         <div id="results" class="results"></div>
     </div>
 
     <script>
-        function checkUploadedPhotos() {
-          const input = document.getElementById('photoInput');
-          const L = parseInt(document.getElementById('minLength').value);
-          const resultDiv = document.getElementById('results');
-          resultDiv.innerHTML = '';
-    
-          if (!input.files.length) {
-            resultDiv.innerHTML = '<p style="color:red;">Please select at least one image.</p>';
-            return;
-          }
-    
-          Array.from(input.files).forEach((file, index) => {
-            const img = new Image();
-            const objectURL = URL.createObjectURL(file);
-    
-            img.onload = function () {
-              const W = img.width;
-              const H = img.height;
-    
-              const resultLine = document.createElement('div');
-              resultLine.classList.add('result-line');
-    
-              if (W < L || H < L) {
-                resultLine.textContent = `${file.name}: UPLOAD ANOTHER`;
-                resultLine.classList.add('upload-another');
-              } else if (W === H) {
-                resultLine.textContent = `${file.name}: ACCEPTED`;
-                resultLine.classList.add('accepted');
-              } else {
-                resultLine.textContent = `${file.name}: CROP IT`;
-                resultLine.classList.add('crop');
-              }
-    
-              resultDiv.appendChild(resultLine);
-              URL.revokeObjectURL(objectURL);
-            };
-    
-            img.onerror = function () {
-              const errorLine = document.createElement('div');
-              errorLine.textContent = `${file.name}: Invalid image file`;
-              errorLine.style.color = 'gray';
-              resultDiv.appendChild(errorLine);
-              URL.revokeObjectURL(objectURL);
-            };
-    
-            img.src = objectURL;
-          });
+        const checkboxes = document.querySelectorAll('.form-check-input');
+        const submitButton = document.querySelector('.btn.btn-secondary');
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function () {
+                checkboxes.forEach(cb => {
+                    if (cb !== checkbox) cb.checked = false;
+                });
+
+                const anyChecked = Array.from(checkboxes).some(cb => cb.checked);
+
+                if (anyChecked) {
+                    submitButton.disabled = false;
+                    submitButton.style.backgroundColor = '#86bc25';
+                    submitButton.style.borderColor = '#86bc25';
+                    submitButton.style.color = '#fff';
+                } else {
+                    submitButton.disabled = true;
+                    submitButton.style.backgroundColor = '#6c757d';
+                    submitButton.style.borderColor = '#6c757d';
+                    submitButton.style.color = '#fff';
+                }
+            });
+        });
+        
+
+        function updateFileLimit() {
+            const N = parseInt(document.getElementById('photoCount').value);
+            const fileHint = document.getElementById('fileHint');
+            fileHint.textContent = `You must upload exactly ${N} image${N > 1 ? 's' : ''}.`;
+            document.getElementById('photoInput').value = '';
+            document.getElementById('results').innerHTML = '';
         }
-      </script>
+
+        function checkUploadedPhotos() {
+            const L = parseInt(document.getElementById('minLength').value);
+            const N = parseInt(document.getElementById('photoCount').value);
+            const input = document.getElementById('photoInput');
+            const resultDiv = document.getElementById('results');
+            resultDiv.innerHTML = '';
+
+            if (!input.files.length) {
+                resultDiv.innerHTML = '<p class="text-danger">Please upload photos first.</p>';
+                return;
+            }
+
+            if (input.files.length !== N) {
+                resultDiv.innerHTML = `<p class="text-danger">You must upload exactly ${N} image${N > 1 ? 's' : ''}.</p>`;
+                return;
+            }
+
+            Array.from(input.files).forEach((file, index) => {
+                const img = new Image();
+                const objectURL = URL.createObjectURL(file);
+
+                img.onload = function () {
+                    const W = img.width;
+                    const H = img.height;
+
+                    const container = document.createElement('div');
+                    container.classList.add('result-line');
+
+                    const preview = document.createElement('img');
+                    preview.src = objectURL;
+                    preview.classList.add('preview-img');
+
+                    const text = document.createElement('span');
+                    const replaceBtn = document.createElement('button');
+                    replaceBtn.textContent = "Replace";
+                    replaceBtn.className = "btn btn-sm btn-outline-secondary replace-btn";
+
+                    if (W < L || H < L) {
+                        text.textContent = `${file.name}: UPLOAD ANOTHER`;
+                        text.classList.add('upload-another');
+                        replaceBtn.onclick = () => replaceImage(index);
+                    } else if (W === H) {
+                        text.textContent = `${file.name}: ACCEPTED`;
+                        text.classList.add('accepted');
+                        replaceBtn.style.display = "none";
+                    } else {
+                        text.textContent = `${file.name}: CROP IT`;
+                        text.classList.add('crop');
+                        replaceBtn.onclick = () => replaceImage(index);
+                    }
+
+                    container.appendChild(preview);
+                    container.appendChild(text);
+                    container.appendChild(replaceBtn);
+                    resultDiv.appendChild(container);
+
+                    URL.revokeObjectURL(objectURL);
+                };
+
+                img.onerror = function () {
+                    const errorLine = document.createElement('div');
+                    errorLine.textContent = `${file.name}: Invalid image file`;
+                    errorLine.style.color = 'gray';
+                    resultDiv.appendChild(errorLine);
+                    URL.revokeObjectURL(objectURL);
+                };
+
+                img.src = objectURL;
+            });
+        }
+
+        function replaceImage(index) {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+
+                const photoInput = document.getElementById('photoInput');
+                const dataTransfer = new DataTransfer();
+
+                const oldFiles = Array.from(photoInput.files);
+                oldFiles[index] = file;
+                oldFiles.forEach(f => dataTransfer.items.add(f));
+                photoInput.files = dataTransfer.files;
+
+                checkUploadedPhotos();
+            };
+            input.click();
+        }
+
+        updateFileLimit();
+    </script>
 
 </body>
 

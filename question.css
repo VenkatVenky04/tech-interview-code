@@ -43,6 +43,57 @@
   .result-line.crop {
     color: orange;
   }
+  
+  .Profile_pic_task {
+      margin: 40px auto;
+      max-width: 700px;
+      padding: 30px;
+      border-radius: 12px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .results {
+      margin-top: 25px;
+    }
+
+    .result-line {
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f8f9fa;
+    }
+
+    .upload-another {
+      color: red;
+      font-weight: bold;
+    }
+
+    .crop {
+      color: orange;
+      font-weight: bold;
+    }
+
+    .accepted {
+      color: green;
+      font-weight: bold;
+    }
+
+    .preview-img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-right: 10px;
+    }
+
+    .replace-btn {
+      font-size: 0.9rem;
+    }
 
 /* Media Queries */
 /* Mobile devices (portrait phones, less than 576px) */
